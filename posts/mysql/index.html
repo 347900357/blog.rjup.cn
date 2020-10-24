@@ -17,7 +17,7 @@
   <meta name="description" content="An elegant Material-Design theme for Hexo">
   <meta name="author" content="软件UP">
   <meta name="keywords" content="hexo,theme,fluid,material,material-design,blog">
-  <title>Hello World - 软件UP</title>
+  <title>mysql - 软件UP</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -157,7 +157,7 @@
           <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
-                Hello World
+                mysql
               
             </span>
 
@@ -167,7 +167,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-13 18:59" pubdate>
+      <time datetime="2020-10-13 19:40" pubdate>
         2020年10月13日 晚上
       </time>
     </span>
@@ -179,7 +179,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      632 字
     </span>
   
 
@@ -189,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -219,22 +219,16 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">mysql</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <p>1、给用户表添加列: 出生日期  [添加字段]<br> alter table user add time data;<br>2、删除列: 年份<br>alter table user drop year;<br>3、将月份列修改为: 年月日<br>alter table user change  ‘月份’  ‘年月日’  text;<br>4、根据主键修改天气表中的最低气温(-10)<br>delete from tianqi where qingkuang = 6;<br>5、根据主键删除天气表的数据<br>delete from tianqi where id = 6;<br>6、查询所有用户<br>select *  from user ;<br>7、查询用户总条数，将查询结果设置别名<br>select count(*) AS   ‘个数 ‘  from user;<br>8、修改用户表中数据，将天气管理员姓名改为管理员<br> update    tianqi  set  type=’管理员’   where type=’天气管理员’;<br>9、模糊查询用户表中姓名带有”理”，请用下划线进行模糊查询<br>select * from user where name like’_理’;<br>10、查询天气表中，最低气温低于20度的天气信息<br> select * from tianqi where  温度&lt;20;<br>11、查询天气表中，最高气温在 10~25度区间的天气信息<br> select * from tianqi where  温度&lt;25 and 温度&gt;10  ;<br>12、查询天气表信息，根据风级降序排列<br>select * from tianqi  ORDER BY 风级 desc ;<br>13、查询天气表中最高气温，起别名<br>select   MAX(wd) as ‘最高温度’  from tianqi  ;<br>14、查询天气表中，最低气温的平均值，起别名<br>select   AVG(wd) as ‘平均温度’  from tianqi  ;<br>15、请利用限制查询，查询天气时间表中，星期三与星期四的信息<br>select * from time where xq = ‘星期三’ or  xq = ‘星期四’ ;</p>
+<p>作业:<br>1.请查询，星期二的风级(两表关联)建议用 left join<br>select  风级 from time left join tianqi  on time.id=tianqi.wid  where xq = ‘星期二’ ;</p>
+<p>2、手动创建外键，天气时间表的wId，依赖天气表主键</p>
+<p>ALTER TABLE <code>demo</code>.<code>time</code><br>ADD FOREIGN KEY (<code>id</code>, <code>wid</code>) REFERENCES <code>demo</code>.<code>tianqi</code> (<code>id</code>);</p>
+<p>3、普通查询:查询星期三的天气信息，天气状况,<br>select 天气情况 from time,tianqi  where time.id=tianqi.id and  xq = ‘星期三’ ;<br>4、左\右\inner关联查询第三题<br>5、in子查询，查询风级为2级的星期号<br>select * from time where id in ( select  id from tianqi  where 风级 = 2<br>);</p>
+<p>6.查询天气时间表的前三条数据并关联天气表<br>select * from time,tianqi  where  time.id=tianqi.id  limit 0,3 ;<br>7查询此三天的平均最低气温 平均函数AVG  前三条limit 0,3<br>SELECT AVG(温度) AS 平均温度  FROM time, tianqi  WHERE time.id = tianqi.id  LIMIT 0,3;</p>
+<p>8、查询风级低于5级的所有星期号; 子查询<br>select * from time where id in ( select  id from tianqi  where 风级 &lt; 5<br>);</p>
 
             </div>
             <hr>
@@ -251,15 +245,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/%E5%89%8D%E7%AB%AF%E5%BF%85%E8%AE%B0%E7%82%B9/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前端必记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/posts/%E8%80%83%E7%82%B9%E6%95%B4%E7%90%86/">
+                        <span class="hidden-mobile">考点整理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
