@@ -17,7 +17,7 @@
   <meta name="description" content="An elegant Material-Design theme for Hexo">
   <meta name="author" content="软件UP">
   <meta name="keywords" content="hexo,theme,fluid,material,material-design,blog">
-  <title>测试 - 软件UP</title>
+  <title>mysql - 软件UP</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -157,7 +157,7 @@
           <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
-                测试
+                mysql
               
             </span>
 
@@ -219,7 +219,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">测试</h1>
+            <h1 style="display: none">mysql</h1>
             
             <div class="markdown-body" id="post-body">
               <p>1、给用户表添加列: 出生日期  [添加字段]<br> alter table user add time data;<br>2、删除列: 年份<br>alter table user drop year;<br>3、将月份列修改为: 年月日<br>alter table user change  ‘月份’  ‘年月日’  text;<br>4、根据主键修改天气表中的最低气温(-10)<br>delete from tianqi where qingkuang = 6;<br>5、根据主键删除天气表的数据<br>delete from tianqi where id = 6;<br>6、查询所有用户<br>select *  from user ;<br>7、查询用户总条数，将查询结果设置别名<br>select count(*) AS   ‘个数 ‘  from user;<br>8、修改用户表中数据，将天气管理员姓名改为管理员<br> update    tianqi  set  type=’管理员’   where type=’天气管理员’;<br>9、模糊查询用户表中姓名带有”理”，请用下划线进行模糊查询<br>select * from user where name like’_理’;<br>10、查询天气表中，最低气温低于20度的天气信息<br> select * from tianqi where  温度&lt;20;<br>11、查询天气表中，最高气温在 10~25度区间的天气信息<br> select * from tianqi where  温度&lt;25 and 温度&gt;10  ;<br>12、查询天气表信息，根据风级降序排列<br>select * from tianqi  ORDER BY 风级 desc ;<br>13、查询天气表中最高气温，起别名<br>select   MAX(wd) as ‘最高温度’  from tianqi  ;<br>14、查询天气表中，最低气温的平均值，起别名<br>select   AVG(wd) as ‘平均温度’  from tianqi  ;<br>15、请利用限制查询，查询天气时间表中，星期三与星期四的信息<br>select * from time where xq = ‘星期三’ or  xq = ‘星期四’ ;</p>
