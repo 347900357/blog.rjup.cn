@@ -179,7 +179,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      452 字
+      632 字
     </span>
   
 
@@ -189,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      8
        分钟
     </span>
   
@@ -222,10 +222,13 @@
             <h1 style="display: none">测试</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="测试测试"><a href="#测试测试" class="headerlink" title="测试测试"></a>测试测试</h1><p>阿三大苏打a</p>
-<p>阿萨打阿萨打阿达的阿达</p>
-<p>阿萨打手阿大撒阿萨打 </p>
-<p>阿萨打阿萨打阿萨的啊啊阿萨法萨卡拉回来噶山豆根 告诉对方收到 撒丰官igi日微软文件测版从脚本插线板现场必须继续保持看必修课成本看不出KC下现场下最新版吃不吃哦个单位　定位　我　为而无法跨境电商什么的满地没什么什么的说点什么代码的模式收到没什么的是多么扫描声明东收到收到吗什么都没收到没事的没事的没事的扫描是收到锚点模式模式的说明书扫描　是没事的没事的没事扫描声明东扫描门什么是　手动模式吗　模式扫描什么是模式扫描扫描扫描模式是　是模式扫描扫描什么什么扫描扫描是门什么什么模式模拟输出呢农村民生是明明是年少成名输出　什么才能产生美是充满吗产生脉冲输出模式名称是充满吃什么什么餐厨你从四川眉山市出门　超长寿命摩搜索层面上催眠术催眠什么车输出输出吗扫描层面上秘书处输出吗每次秘书处门什么测试催眠术催眠秘书处你漫长骂你什么呢什么菜市场模式村上春树可能是从　上次你上课时才能是思考思考市场你是处男四川省　　　神奈川时才能看出是是市场开始　是市场考察市场是　实施农村三年内抗生素输出长沙市查看看　</p>
+              <p>1、给用户表添加列: 出生日期  [添加字段]<br> alter table user add time data;<br>2、删除列: 年份<br>alter table user drop year;<br>3、将月份列修改为: 年月日<br>alter table user change  ‘月份’  ‘年月日’  text;<br>4、根据主键修改天气表中的最低气温(-10)<br>delete from tianqi where qingkuang = 6;<br>5、根据主键删除天气表的数据<br>delete from tianqi where id = 6;<br>6、查询所有用户<br>select *  from user ;<br>7、查询用户总条数，将查询结果设置别名<br>select count(*) AS   ‘个数 ‘  from user;<br>8、修改用户表中数据，将天气管理员姓名改为管理员<br> update    tianqi  set  type=’管理员’   where type=’天气管理员’;<br>9、模糊查询用户表中姓名带有”理”，请用下划线进行模糊查询<br>select * from user where name like’_理’;<br>10、查询天气表中，最低气温低于20度的天气信息<br> select * from tianqi where  温度&lt;20;<br>11、查询天气表中，最高气温在 10~25度区间的天气信息<br> select * from tianqi where  温度&lt;25 and 温度&gt;10  ;<br>12、查询天气表信息，根据风级降序排列<br>select * from tianqi  ORDER BY 风级 desc ;<br>13、查询天气表中最高气温，起别名<br>select   MAX(wd) as ‘最高温度’  from tianqi  ;<br>14、查询天气表中，最低气温的平均值，起别名<br>select   AVG(wd) as ‘平均温度’  from tianqi  ;<br>15、请利用限制查询，查询天气时间表中，星期三与星期四的信息<br>select * from time where xq = ‘星期三’ or  xq = ‘星期四’ ;</p>
+<p>作业:<br>1.请查询，星期二的风级(两表关联)建议用 left join<br>select  风级 from time left join tianqi  on time.id=tianqi.wid  where xq = ‘星期二’ ;</p>
+<p>2、手动创建外键，天气时间表的wId，依赖天气表主键</p>
+<p>ALTER TABLE <code>demo</code>.<code>time</code><br>ADD FOREIGN KEY (<code>id</code>, <code>wid</code>) REFERENCES <code>demo</code>.<code>tianqi</code> (<code>id</code>);</p>
+<p>3、普通查询:查询星期三的天气信息，天气状况,<br>select 天气情况 from time,tianqi  where time.id=tianqi.id and  xq = ‘星期三’ ;<br>4、左\右\inner关联查询第三题<br>5、in子查询，查询风级为2级的星期号<br>select * from time where id in ( select  id from tianqi  where 风级 = 2<br>);</p>
+<p>6.查询天气时间表的前三条数据并关联天气表<br>select * from time,tianqi  where  time.id=tianqi.id  limit 0,3 ;<br>7查询此三天的平均最低气温 平均函数AVG  前三条limit 0,3<br>SELECT AVG(温度) AS 平均温度  FROM time, tianqi  WHERE time.id = tianqi.id  LIMIT 0,3;</p>
+<p>8、查询风级低于5级的所有星期号; 子查询<br>select * from time where id in ( select  id from tianqi  where 风级 &lt; 5<br>);</p>
 
             </div>
             <hr>
